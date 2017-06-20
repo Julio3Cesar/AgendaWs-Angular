@@ -2,17 +2,8 @@ package br.com.jc.agendaws.models.DTO;
 
 public class UsuarioAutenticaDTO {
     
-    private String email;
     private String user;
     private String pass;
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public String getUser() {
         return user;

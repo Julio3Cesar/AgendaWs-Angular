@@ -7,7 +7,7 @@ public class ObjectResponse<T> {
     private String status;
     private String message;
     private T object;
-    private List<T> objectList;
+    private List<T> objectList = null;
 
     public ObjectResponse(String status, String message, T object) {
         this.status = status;

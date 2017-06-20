@@ -32,5 +32,4 @@ public class ApplicationConfig extends Application {
         resources.add(br.com.jc.agendaws.webservice.impl.ContatosEndPoint.class);
         resources.add(br.com.jc.agendaws.webservice.impl.LoguinEndPoint.class);
     }
-    
 }

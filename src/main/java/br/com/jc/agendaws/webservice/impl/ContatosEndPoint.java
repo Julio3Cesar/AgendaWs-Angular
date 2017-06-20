@@ -5,7 +5,6 @@ import br.com.jc.agendaws.service.ContatosService;
 import br.com.jc.agendaws.service.impl.ContatosServiceImpl;
 import br.com.jc.agendaws.webservice.ContatosWebService;
 import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
 import java.util.Arrays;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
@@ -16,7 +15,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
 @Path("agenda")
 public class ContatosEndPoint implements ContatosWebService {

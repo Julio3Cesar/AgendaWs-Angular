@@ -5,12 +5,21 @@ package br.com.jc.agendaws.models.DTO;
 public class UsuarioLogadoDTO {
     
     private String nome;
-    private String username;
-//    private Token token;
+    private String foto;
+    private String profissao;
 
-    public UsuarioLogadoDTO(String nome, String username) {
+    public UsuarioLogadoDTO(String nome, String foto, String profissao) {
         this.nome = nome;
-        this.username = username;
+        this.foto = foto;
+        this.profissao = profissao;
+    }
+
+    public UsuarioLogadoDTO(String nome, String profissao) {
+        this.nome = nome;
+        this.profissao = profissao;
+    }
+    
+    public UsuarioLogadoDTO() {
     }
 
     public String getNome() {
@@ -21,11 +30,19 @@ public class UsuarioLogadoDTO {
         this.nome = nome;
     }
 
-    public String getUsername() {
-        return username;
+    public String getFoto() {
+        return foto;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
+    public String getProfissao() {
+        return profissao;
+    }
+
+    public void setProfissao(String profissao) {
+        this.profissao = profissao;
     }
 }

@@ -4,21 +4,14 @@ import br.com.jc.agendaws.dao.ContatoDao;
 import br.com.jc.agendaws.factory.EMFactory;
 import br.com.jc.agendaws.models.Contatos;
 import java.util.List;
-import javax.ejb.Stateless;
-import javax.ejb.TransactionManagement;
-import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
-@Stateless
-@TransactionManagement(TransactionManagementType.CONTAINER)
 public class ContatoDaoImpl implements ContatoDao {
     
-    @PersistenceContext
     private EntityManager em;
 
     public ContatoDaoImpl() {
-//        this.em = new EMFactory().getEntityManager();
+        this.em = new EMFactory().getEntityManager();
     }
 
     @Override
@@ -43,9 +36,9 @@ public class ContatoDaoImpl implements ContatoDao {
 
     @Override
     public void deletarContatoId(Integer id) {
-//        this.em.getTransaction().begin();
+        this.em.getTransaction().begin();
         this.em.remove(this.buscarContatoId(id));
-//        this.em.getTransaction().commit();
+        this.em.getTransaction().commit();
     }
 
     @Override

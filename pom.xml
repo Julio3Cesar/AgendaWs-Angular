@@ -12,6 +12,8 @@
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
 
     <dependencies>
@@ -21,14 +23,12 @@
             <artifactId>ejb-api</artifactId>
             <version>3.0</version>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/org.jboss.spec.javax.ejb/jboss-ejb-api_3.2_spec -->
         <dependency>
             <groupId>org.jboss.spec.javax.ejb</groupId>
             <artifactId>jboss-ejb-api_3.2_spec</artifactId>
             <version>1.0.0.Final</version>
         </dependency>
-
         <!--Gson-->
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -51,22 +51,6 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
             <version>4.3.1.Final</version>
-        </dependency>
-        <!--Dependencias Jersey--> 
-        <dependency>
-            <groupId>org.glassfish.jersey.core</groupId>
-            <artifactId>jersey-server</artifactId>
-            <version>2.25</version>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.core</groupId>
-            <artifactId>jersey-client</artifactId>
-            <version>2.25</version>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.containers</groupId>
-            <artifactId>jersey-container-servlet</artifactId>
-            <version>2.25</version>
         </dependency>
         <!--tem que ter isso para enviar JSON-->
         <dependency>
@@ -102,25 +86,16 @@
             <version>6.0</version>
             <scope>provided</scope>
         </dependency>
+        <!--Dependencia do JWT auth0-->
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>3.0.2</version>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.2.4.v20141103</version>
-                <configuration>
-                    <httpConnector>
-                        <!-- make jetty listen on 127.0.0.1 for better security -->
-                        <!--host>127.0.0.1</host-->
-                    </httpConnector>
-                    <scanIntervalSeconds>3</scanIntervalSeconds>
-                    <webAppConfig>
-                        <!-- defaultsDescriptor>src/test/resources/jetty-maven-plugin-webdefault.xml</defaultsDescriptor -->
-                    </webAppConfig>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
     <repositories>

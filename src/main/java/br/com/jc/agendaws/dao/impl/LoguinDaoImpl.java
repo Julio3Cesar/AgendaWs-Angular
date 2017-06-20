@@ -14,17 +14,11 @@ public class LoguinDaoImpl implements LoguinDao {
         this.em = new EMFactory().getEntityManager();
     }
 
-    public Usuario buscarUserPass(UsuarioAutenticaDTO usuario) {
-        if (usuario.getUser() != null) {
-            return em.createNamedQuery("findByUsernameAndSenha", Usuario.class)
-                    .setParameter("username", usuario.getUser())
-                    .setParameter("senha", usuario.getPass())
-                    .getSingleResult();
-        } else {
-            return em.createNamedQuery("findByEmailAndSenha", Usuario.class)
-                    .setParameter("email", usuario.getEmail())
-                    .setParameter("senha", usuario.getPass())
-                    .getSingleResult();
-        }
+    @Override
+    public Usuario buscarUser(UsuarioAutenticaDTO usuario) {
+        return em.createNamedQuery("Usuario.findByUsernameAndSenha", Usuario.class)
+                .setParameter("username", usuario.getUser())
+                .setParameter("senha", usuario.getPass())
+                .getSingleResult();
     }
 }
