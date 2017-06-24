@@ -6,6 +6,7 @@
 package br.com.jc.agendaws.webservice;
 
 import br.com.jc.agendaws.models.DTO.ContatoDTO;
+import java.util.List;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
@@ -15,11 +16,11 @@ import javax.ws.rs.core.Response;
  */
 public interface ContatosWebService {
 
-    String getContatosJson();
+    List<ContatoDTO> getContatos();
 
-    String getContatoJson(@PathParam("id") Integer id);
+    ContatoDTO getContato(@PathParam("id") Integer id);
     
-    String postJson(ContatoDTO contato);
+    Response adicionar(ContatoDTO contato);
     
-    String delete(@PathParam("id") Integer id);
+    Response deletar(@PathParam("id") Integer id);
 }

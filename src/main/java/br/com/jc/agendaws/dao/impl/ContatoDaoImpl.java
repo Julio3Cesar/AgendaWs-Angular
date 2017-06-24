@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 
 public class ContatoDaoImpl implements ContatoDao {
     
-    private EntityManager em;
+    private final EntityManager em;
 
     public ContatoDaoImpl() {
         this.em = new EMFactory().getEntityManager();

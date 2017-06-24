@@ -18,7 +18,6 @@ public class ContatosServiceImpl implements ContatosService {
     public ContatosServiceImpl() {
         this.dao = new ContatoDaoImpl();
         this.resultList = new ArrayList();
-        this.listContatos = new ArrayList();
     }
 
     @Override
