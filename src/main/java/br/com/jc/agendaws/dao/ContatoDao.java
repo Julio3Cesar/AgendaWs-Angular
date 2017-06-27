@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface ContatoDao {
 
-    List<Contatos> listarContatos();
+    List<Contatos> listarContatos(String user);
 
     Contatos buscarContatoId(Integer id);
     

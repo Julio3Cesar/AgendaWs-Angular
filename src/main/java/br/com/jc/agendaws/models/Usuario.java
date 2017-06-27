@@ -36,6 +36,10 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    @NotNull
+    @Size(max = 255)
+    @Column(name = "foto")
+    private String foto;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
@@ -60,6 +64,10 @@ public class Usuario implements Serializable {
     @Size(max = 255)
     @Column(name = "senha")
     private String senha;
+    @Size(max = 255)
+    @NotNull
+    @Column(name = "profissao")
+    private String profissao;
 
     public Usuario() {
     }
@@ -82,6 +90,22 @@ public class Usuario implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
+    public String getProfissao() {
+        return profissao;
+    }
+
+    public void setProfissao(String profissao) {
+        this.profissao = profissao;
     }
 
     public String getNome() {

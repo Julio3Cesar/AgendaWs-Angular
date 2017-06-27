@@ -1,4 +1,4 @@
-package br.com.jc.agendaws.webservice.impl;
+package br.com.jc.agendaws.webservice.config;
 
 import java.util.Set;
 import javax.ws.rs.core.Application;
@@ -20,8 +20,10 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-//        resources.add(br.com.jc.agendaws.filter.TokenInterceptor.class);
+        resources.add(br.com.jc.agendaws.filter.TokenInterceptor.class);
         resources.add(br.com.jc.agendaws.webservice.impl.ContatosEndPoint.class);
         resources.add(br.com.jc.agendaws.webservice.impl.LoguinEndPoint.class);
+        resources.add(br.com.jc.agendaws.webservice.impl.RegisterEndPoint.class);
+        resources.add(br.com.jc.agendaws.webservice.impl.UsuarioEndPoint.class);
     }
 }

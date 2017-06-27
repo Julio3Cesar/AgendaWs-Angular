@@ -15,8 +15,10 @@ public class ContatoDaoImpl implements ContatoDao {
     }
 
     @Override
-    public List<Contatos> listarContatos() {
-        return this.em.createNamedQuery("Contatos.findAll", Contatos.class).getResultList();
+    public List<Contatos> listarContatos(String user) {
+        return this.em.createNamedQuery("Contatos.findAllUser", Contatos.class)
+                .setParameter("user", user)
+                .getResultList();
     }
 
     @Override

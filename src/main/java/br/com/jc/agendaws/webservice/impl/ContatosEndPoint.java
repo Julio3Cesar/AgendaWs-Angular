@@ -13,12 +13,16 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
 @Path("agenda")
 public class ContatosEndPoint implements ContatosWebService {
 
+    @Context
+    private UriInfo context;
     private final ContatosService service;
 
     public ContatosEndPoint() {
@@ -27,17 +31,18 @@ public class ContatosEndPoint implements ContatosWebService {
 
     @GET
     @Override
-    @Path("contatos")
+    @Path("contatos/{user}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<ContatoDTO> getContatos() {
-        return this.service.getContatos();
+    public List<ContatoDTO> getContatos(@PathParam("user") String usuario) {
+//        System.out.println(context.getPathParameters());
+        return this.service.getContatos(usuario);
     }
 
     @GET
     @Override
     @Path("contato/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public ContatoDTO getContato(@PathParam("id") Integer id) {
+    public ContatoDTO getContato(@PathParam("id") int id) {
         return this.service.getContato(id);
     }
 
@@ -46,9 +51,10 @@ public class ContatosEndPoint implements ContatosWebService {
     @Path("cadastrar")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response adicionar(ContatoDTO contatoj) {
+    public Response adicionar(ContatoDTO contato) {
         try {
-            this.service.setContato(contatoj);
+//            contato.setUser("master");
+            this.service.setContato(contato);
             return Response.status(Response.Status.CREATED).build();
         } catch (Exception e) {
             System.out.println("ERROR AO ADD! ");

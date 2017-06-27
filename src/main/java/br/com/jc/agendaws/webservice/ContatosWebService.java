@@ -16,9 +16,9 @@ import javax.ws.rs.core.Response;
  */
 public interface ContatosWebService {
 
-    List<ContatoDTO> getContatos();
+    List<ContatoDTO> getContatos(String user);
 
-    ContatoDTO getContato(@PathParam("id") Integer id);
+    ContatoDTO getContato(@PathParam("id") int id);
     
     Response adicionar(ContatoDTO contato);
     

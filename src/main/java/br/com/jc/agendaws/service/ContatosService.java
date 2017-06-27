@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface ContatosService {
 
-    List<ContatoDTO> getContatos();
+    List<ContatoDTO> getContatos(String user);
 
     void setContato(ContatoDTO contato);
     

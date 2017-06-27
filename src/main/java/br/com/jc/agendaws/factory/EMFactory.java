@@ -7,21 +7,19 @@ import javax.persistence.Persistence;
 
 @Singleton
 public class EMFactory {
-    
+
     private EntityManagerFactory emf;
 
     private EntityManager fabrica() {
         if (emf == null) {
-            emf = Persistence.createEntityManagerFactory("agendaws");//aqui é o nome da persistencia...
+            emf = Persistence.createEntityManagerFactory("agendaws");
         }
         return emf.createEntityManager();
     }
-
     private void fecha(EntityManager em) {
         em.close();
     }
-    
-    public EntityManager getEntityManager(){
+    public EntityManager getEntityManager() {
         return fabrica();
     }
 }

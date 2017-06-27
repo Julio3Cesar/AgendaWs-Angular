@@ -18,26 +18,33 @@ public class ContatosServiceImpl implements ContatosService {
     public ContatosServiceImpl() {
         this.dao = new ContatoDaoImpl();
         this.resultList = new ArrayList();
+        this.listContatos = new ArrayList();
     }
 
     @Override
-    public List<ContatoDTO> getContatos() {
+    public List<ContatoDTO> getContatos(String user) {
         this.listContatos.clear();
-        this.listContatos = this.dao.listarContatos();
+        this.listContatos = this.dao.listarContatos(user);
         this.populaResultList(this.listContatos);
         return this.resultList;
+    }
+    
+    @Override
+    public ContatoDTO getContato(Integer id) {
+        this.listContatos.clear();
+        this.listContatos.add(this.dao.buscarContatoId(id));
+        this.populaResultList(this.listContatos);
+        System.out.println(this.resultList.get(0).getNome());
+        return this.resultList.get(0);
     }
 
     @Override
     public void setContato(ContatoDTO contato) {
-        System.out.println("CHEGOU 1");
         if (contato.getId() == null) {
             this.dao.inserirContato(converteContato(contato));
         } else {
-            System.out.println("CHEGOU 2");
             if (this.dao.buscarContatoId(contato.getId()) != null) {
                 this.dao.updateContato(converteContato(contato));
-                System.out.println("CHEGOU 3");
             } else {
                 throw new WebApplicationException(500);
             }
@@ -45,17 +52,7 @@ public class ContatosServiceImpl implements ContatosService {
     }
 
     @Override
-    public ContatoDTO getContato(Integer id
-    ) {
-        this.listContatos.clear();
-        this.listContatos.add(this.dao.buscarContatoId(id));
-        this.populaResultList(listContatos);
-        return this.resultList.get(0);
-    }
-
-    @Override
-    public void deleteContato(Integer id
-    ) {
+    public void deleteContato(Integer id) {
         this.dao.deletarContatoId(id);
     }
 
@@ -64,6 +61,7 @@ public class ContatosServiceImpl implements ContatosService {
         ContatoDTO aux;
         for (Contatos c : listContatos) {
             aux = new ContatoDTO();
+            aux.setUser(c.getUser());
             aux.setId(c.getId());
             aux.setNome(c.getNome());
             aux.setEmail(c.getEmail());
@@ -75,6 +73,7 @@ public class ContatosServiceImpl implements ContatosService {
 
     private Contatos converteContato(ContatoDTO contato) {
         Contatos c = new Contatos();
+        c.setUser(contato.getUser());
         c.setId(contato.getId());
         c.setNome(contato.getNome());
         c.setEmail(contato.getEmail());

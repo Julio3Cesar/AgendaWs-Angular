@@ -31,7 +31,6 @@ public class LoguinServiceImpl implements LoguinService {
         } else {
             return "false";
         }
-
         try {
             return this.gerarToken(usuarioRes);
         } catch (IllegalArgumentException | UnsupportedEncodingException e) {
@@ -44,7 +43,6 @@ public class LoguinServiceImpl implements LoguinService {
         Algorithm algorithm = Algorithm.HMAC256("secret");
         return JWT.create()
                 .withClaim("user", u.getUsername())
-                .withClaim("nome", u.getNome())
                 .sign(algorithm);
     }
 }
